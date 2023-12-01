@@ -4,20 +4,28 @@
 
 #include "commands/TankDrive.h"
 
-TankDrive::TankDrive() {
-  // Use addRequirements() here to declare subsystem dependencies.
+TankDrive::TankDrive(Chassis& chassis,
+                     std::function<double()> left,
+                     std::function<double()> right)
+: mDrive(chassis), mLeft(left), mRight(right)
+{
+  AddRequirements(&mDrive);
 }
 
 // Called when the command is initially scheduled.
 void TankDrive::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void TankDrive::Execute() {}
+void TankDrive::Execute() 
+{
+   mDrive.TankDrive(mLeft(), mRight());
+}
 
 // Called once the command ends or is interrupted.
 void TankDrive::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool TankDrive::IsFinished() {
+bool TankDrive::IsFinished() 
+{
   return false;
 }

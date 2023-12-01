@@ -9,7 +9,21 @@
 #include "commands/Autos.h"
 #include "commands/ExampleCommand.h"
 
+#include <frc/smartdashboard/SmartDashboard.h>
+
+#include "commands/TankDrive.h"
+
 RobotContainer::RobotContainer() {
+
+
+   mChassis.SetDefaultCommand
+   (
+    TankDrive(
+      mChassis,
+      [this] { return -driver.GetLeftY(); },
+      [this] { return -driver.GetRightY();}
+    )
+   );
   // Initialize all of your commands and subsystems here
 
   // Configure the button bindings

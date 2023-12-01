@@ -18,7 +18,7 @@ Chassis::Chassis(WPI_TalonFX& ID1, WPI_TalonFX& ID2, WPI_TalonFX& ID3, WPI_Talon
 // This method will be called once per scheduler run
 void Chassis::Periodic() {}
 
-void Chassis:TankDrive(double left, double right)
+void Chassis::TankDrive(double left, double right)
 {
     mDrive.TankDrive(left, right);
 }
